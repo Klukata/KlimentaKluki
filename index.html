@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gossip Girl</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background: url('https://i.ytimg.com/vi/gk6QuPkPy9Q/maxresdefault.jpg') no-repeat center center/cover;
+            color: #e0c097;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        header img {
+            max-width: 300px;
+            height: auto;
+        }
+
+        .speech-bubble {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .news-slider {
+            position: relative;
+            max-width: 600px;
+            margin: 50px auto;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .news-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .news-item {
+            min-width: 100%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .news-item.active {
+            display: flex;
+        }
+
+        .news-item img {
+            width: 80%;
+            border-radius: 5px;
+        }
+
+        button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #prev { left: 10px; }
+        #next { right: 10px; }
+
+        .footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #d4af37;
+            font-size: 1.2em;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .news-slider { max-width: 90%; }
+            .news-item img { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://411girlgossip.yolasite.com/resources/logo.png" alt="Gossip Girl Logo" style="max-width: 300px; height: auto;">
+        
+    </header>
+    
+    <main>
+        <section class="news-slider">
+            <div class="news-container">
+                <article class="news-item active">
+                    <h2>Presiana’s Grand Return? Think Again—This Queen Isn’t Looking Back</h2>
+                    <p>"Spotted: Presiana making a bold decision—turns out, she won’t be gracing her old school halls again.
+                And why? Not the drama, not the exes… but the teachers. Looks like someone wasn’t a fan of the faculty, and honestly, who could blame her?
+                One thing’s for sure—class may be in session, but Presiana has already checked out."</p>
+                    <img src="https://drive.google.com/uc?export=view&id=1p1yhdkx1sn1llglT5V9IxUoqUYKdmZIa" alt="Taken from Instagram">
+                    <p></p>
+                </article>
+                <article class="news-item">
+                    <h2>SPOTTED: BLAIR WALDORF</h2>
+                    <p>The return of her best friend. Reaction?</p>
+                    <img src="blair.jpg" alt="Blair Waldorf">
+                </article>
+                <article class="news-item">
+                    <h2>SPOTTED: DAN HUMPHREY</h2>
+                    <p>Who is he?</p>
+                    <img src="dan.jpg" alt="Dan Humphrey">
+                </article>
+            </div>
+            <button id="prev">&#10094;</button>
+            <button id="next">&#10095;</button>
+        </section>
+    </main>
+
+  <!-- Footer -->
+    <footer>
+        XOXO, Gossip Girl
+    </footer>
+
+    
+    
+    <script>
+        const newsItems = document.querySelectorAll('.news-item');
+        let currentIndex = 0;
+
+        document.getElementById('next').addEventListener('click', () => {
+            newsItems[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % newsItems.length;
+            newsItems[currentIndex].classList.add('active');
+        });
+
+        document.getElementById('prev').addEventListener('click', () => {
+            newsItems[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex - 1 + newsItems.length) % newsItems.length;
+            newsItems[currentIndex].classList.add('active');
+        });
+    </script>
+
+</body>
+</html>
